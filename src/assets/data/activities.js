@@ -23,6 +23,13 @@ export const activities = [
         },
         {
           profilePicture: "http://placehold.it/25",
+          firstName: "Matt",
+          lastName: "Damon",
+          recommends: true,
+          comment: "The cocktails were wicked good. Our waitress was wicked smart and didn't write down our order"
+        },
+        {
+          profilePicture: "http://placehold.it/25",
           firstName: "Liam",
           lastName: "Neeson",
           recommends: false,

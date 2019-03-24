@@ -15,7 +15,8 @@ export class ActivityDetailsComponent implements OnInit {
     minutes: "",
     seconds: ""
   };
-  quantity = 1;
+  recommendationPercent;
+  recommendationColor;
   constructor(
     private modalController: ModalController
   ) { }
@@ -32,6 +33,9 @@ export class ActivityDetailsComponent implements OnInit {
       this.expiresIn.minutes = Math.floor(this.expiresIn.value/60000 % 60).toFixed().padStart(2,"0");
       this.expiresIn.hours = Math.floor(this.expiresIn.value/3600000 % 60).toFixed().padStart(2,"0");
     }, 1000);
+    let positiveReviewCount = this.activity.description.reviews.reduce((positiveReviews, review) => review.recommends ? positiveReviews + 1 : positiveReviews, 0);
+    this.recommendationPercent = Math.ceil((positiveReviewCount / this.activity.description.reviews.length) * 100);
+    this.recommendationColor = this.recommendationPercent > 50 ? 'success' : 'danger';
 
   }
   dismiss(){

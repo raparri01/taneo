@@ -1,5 +1,5 @@
-<ion-grid>
-  <ion-row justify-content-between>
+<ion-grid style="width: 100%; border-bottom: 1px solid #ddd">
+  <ion-row style="width: 100%; margin-bottom: 5px" justify-content-between>
     <div style="display:flex; flex-direction: row; align-items: center">
       <ion-avatar>
         <ion-img style="border-radius: 25px;" [src]="review.profilePicture"></ion-img>
@@ -10,7 +10,7 @@
       <ion-badge style="height: 20px; margin-bottom: 2px;" [color]="review.recommends ? 'success' : 'danger'">{{review.recommends ? "Recommends" : "Does not Recommend"}}</ion-badge>
     </div>
   </ion-row>
-  <ion-row>
-    <ion-label>{{review.comment}}</ion-label>
+  <ion-row style="width: 100%;">
+    <ion-label style="color:#333">{{review.comment}}</ion-label>
   </ion-row>
 </ion-grid>
