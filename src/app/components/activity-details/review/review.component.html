@@ -1,0 +1,16 @@
+<ion-grid>
+  <ion-row justify-content-between>
+    <div style="display:flex; flex-direction: row; align-items: center">
+      <ion-avatar>
+        <ion-img style="border-radius: 25px;" [src]="review.profilePicture"></ion-img>
+      </ion-avatar>
+      <ion-label style="margin-left: 5px; font-weight: 600">{{review.firstName}} {{review.lastName}}</ion-label>
+    </div>
+    <div style="display:flex; flex-direction: row; align-items: center">
+      <ion-badge style="height: 20px; margin-bottom: 2px;" [color]="review.recommends ? 'success' : 'danger'">{{review.recommends ? "Recommends" : "Does not Recommend"}}</ion-badge>
+    </div>
+  </ion-row>
+  <ion-row>
+    <ion-label>{{review.comment}}</ion-label>
+  </ion-row>
+</ion-grid>

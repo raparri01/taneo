@@ -1,0 +1,48 @@
+<ion-card class="welcome-card">
+  <ion-img [src]="activity.image"></ion-img>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-label style="font-size: 20px ">
+        {{ activity.name }}
+      </ion-label>
+    </ion-card-title>
+    <ion-card-subtitle>
+      <ion-label>
+        <ion-icon color="tertiary" name="pin"></ion-icon>
+        {{ activity.location }}
+      </ion-label>
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-label>{{ activity.description.main }}</ion-label>
+      </ion-row>
+      <ion-row justify-content-end>
+        <ion-col size="7">
+          <div class="scroll">
+            <ion-chip
+              color="secondary"
+              *ngFor="let category of activity.categories"
+              >{{ category }}</ion-chip
+            >
+          </div>
+        </ion-col>
+        <ion-col
+          style="display: flex; flex-direction: row; justify-content: flex-end;"
+          size="5"
+        >
+          <ion-button (click)="save()" size="small" fill="none"
+            ><ion-icon
+              style="font-size: 28px;"
+              fill="outline"
+              [color]="activity.saved ? 'success' : 'none'"
+              name="bookmark"
+            ></ion-icon
+          ></ion-button>
+          <ion-button size="small" color="tertiary" (click)="showDetails()">View</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
