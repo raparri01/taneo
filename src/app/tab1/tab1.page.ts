@@ -9,6 +9,9 @@ import { ActivityDetailsComponent } from '../components/activity-details/activit
 })
 export class Tab1Page implements OnInit {
   activities = [];
+  filteredActivities = [];
+  searchQuery = "";
+
   constructor(private modalController: ModalController){
 
   }
@@ -22,5 +25,13 @@ export class Tab1Page implements OnInit {
     });
 
     return await activityModal.present();
+  }
+  search(){
+    this.filteredActivities = this.activities.filter(activity => {
+      if(activity.name.indexOf(this.searchQuery) > -1){
+        return activity;
+      }
+    });
+    console.log(this.filteredActivities);
   }
 }
