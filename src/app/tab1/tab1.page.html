@@ -9,12 +9,15 @@
 <ion-content>
   <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
     <ion-searchbar (ionChange)="search()" placeholder="Search for a deal" [(ngModel)]="searchQuery"></ion-searchbar>
-    <ion-button expand="block" size="small"><ion-icon name="funnel"></ion-icon></ion-button>
+    <ion-button (click)="addCategory()" expand="block" size="small"><ion-icon name="funnel"></ion-icon></ion-button>
   </div>
-    <div *ngIf="searchQuery.length > 0">
-      <activity-card *ngFor="let activity of filteredActivities" [activity]="activity"></activity-card>
-    </div>
-    <div *ngIf="searchQuery.length === 0">
-      <activity-card *ngFor="let activity of activities" [activity]="activity"></activity-card>
-    </div>
+  <div *ngIf="categories.length > 0" class="scroll">
+      <ion-chip color="secondary"*ngFor="let category of categories" (click)="removeFilter(category)">{{ category }}</ion-chip>
+  </div>
+  <div *ngIf="searchQuery.length > 0 || categories.length > 0">
+    <activity-card *ngFor="let activity of filteredActivities" [activity]="activity"></activity-card>
+  </div>
+  <div *ngIf="searchQuery.length === 0 && categories.length === 0">
+    <activity-card *ngFor="let activity of activities" [activity]="activity"></activity-card>
+  </div>
 </ion-content>
