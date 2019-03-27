@@ -11,6 +11,5 @@ export class ReviewComponent implements OnInit {
   @Input() review;
 
   ngOnInit() {
-    console.log(this.review);
   }
 }

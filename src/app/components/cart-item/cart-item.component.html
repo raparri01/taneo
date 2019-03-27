@@ -15,7 +15,8 @@
       <ion-input
         style="border: 1px solid #ddd; border-radius: 5px;"
         type="number"
-        [value]="1">
+        [(ngModel)]="item.quantity"
+        (ionChange)="updateQuantity()">
       </ion-input>
   </ion-col>
   <ion-col size="2"style="display: flex; flex-direction: column; justify-content: center;">{{ item.currencySymbol }}{{ item.price }}</ion-col>

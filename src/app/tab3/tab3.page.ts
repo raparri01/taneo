@@ -15,11 +15,13 @@ export class Tab3Page implements OnInit {
     private cartService: CartService
   ){}
   ngOnInit(){
-    this.items = this.cartService.items;
-    console.log(this.items);
+    this.cartService.items.subscribe(items => {
+      this.items = items;
+      this.getTotals();
+    });
   }
   getTotals(){
-    this.totalPrice = this.items.reduce((item, sum) => sum = item.price * item.quantity + sum, 0);
-    this.totalCount = this.items.reduce((item, count) => count =  item.quantity + count, 0);
+    this.totalPrice = this.items.reduce((sum, item) => sum = item.price * item.quantity + sum, 0);
+    this.totalCount = this.items.reduce((count, item) => count =  item.quantity + count, 0);
   }
 }

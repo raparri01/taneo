@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -20,7 +20,8 @@ export class ActivityDetailsComponent implements OnInit {
   recommendationColor;
   constructor(
     private modalController: ModalController,
-    private cartService: CartService
+    private cartService: CartService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -43,8 +44,31 @@ export class ActivityDetailsComponent implements OnInit {
   dismiss(){
     this.modalController.dismiss();
   }
-  addToCart(){
-    this.cartService.addToCart(this.activity);
+  async addToCart(){
+    let cartAlert = await this.alertController.create({
+      header: 'Add To Cart',
+      subHeader: this.activity.name,
+      message: 'Add items to your cart',
+      inputs:[
+        {
+          name: 'quantity',
+          type: 'number',
+          value: 1
+        }
+      ],
+      buttons: [{
+        text: "Ok",
+        handler: (data) => {
+          this.cartService.addToCart({...this.activity, quantity: data.quantity});
+          this.modalController.dismiss();
+        }
+      }, {
+        text:"cancel"
+      }]
+    });
+
+    return await cartAlert.present();
+    //this.cartService.addToCart(this.activity);
   }
 
 
