@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-activity-details',
@@ -18,7 +19,8 @@ export class ActivityDetailsComponent implements OnInit {
   recommendationPercent;
   recommendationColor;
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,9 @@ export class ActivityDetailsComponent implements OnInit {
   }
   dismiss(){
     this.modalController.dismiss();
+  }
+  addToCart(){
+    this.cartService.addToCart(this.activity);
   }
 
 

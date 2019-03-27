@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
-import { ActivityCardComponent } from '../components/activity-card/activity-card.component';
 import { ActivityDetailsComponent } from '../components/activity-details/activity-details.component';
-import { ReviewComponent } from '../components/activity-details/review/review.component';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   entryComponents:[
@@ -16,8 +15,9 @@ import { ReviewComponent } from '../components/activity-details/review/review.co
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab1Page }])
+    RouterModule.forChild([{ path: '', component: Tab1Page }]),
+    ComponentsModule
   ],
-  declarations: [Tab1Page, ActivityCardComponent, ActivityDetailsComponent, ReviewComponent]
+  declarations: [Tab1Page]
 })
 export class Tab1PageModule {}

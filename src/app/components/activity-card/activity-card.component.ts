@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ActivityDetailsComponent } from '../activity-details/activity-details.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'activity-card',
@@ -10,7 +11,8 @@ import { ActivityDetailsComponent } from '../activity-details/activity-details.c
 export class ActivityCardComponent implements OnInit {
   @Input() activity;
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {}
@@ -24,6 +26,9 @@ export class ActivityCardComponent implements OnInit {
     });
 
     return await detailsModal.present();
+  }
+  addToCart(){
+    this.cartService.addToCart(this.activity);
   }
   
 }

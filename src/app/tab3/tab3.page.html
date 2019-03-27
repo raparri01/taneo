@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Your Cart
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content *ngIf="items.length > 0">
+<ion-grid>
+  <cart-item *ngFor="let item of items" [item]="item"></cart-item>
+</ion-grid>  
+<ion-row style="margin: 0 5px; font-weight: bold;">
+  <ion-col size="8">Totals</ion-col>
+  <ion-col size="2" style="text-align: center;">{{totalCount}}</ion-col>
+  <ion-col size="2">${{totalPrice}}</ion-col>
+</ion-row>
+    <div style="position: fixed; bottom: 0px; width: 100%; padding: 0px; margin: 0px; background-color: white; border-top: 1px solid #ddd">
+    <ion-grid>
+      <ion-row>
+          <ion-button style="width: 100%" expand="block" color="success">Checkout</ion-button>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<ion-content *ngIf="items.length === 0">
+  <ion-row justify-content-center padding style="height: 100%; align-items: center;"><ion-label style="color: #ccc">Your Cart is Empty</ion-label></ion-row>
+</ion-content>
