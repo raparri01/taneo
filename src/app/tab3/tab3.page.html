@@ -18,7 +18,7 @@
     <div style="position: fixed; bottom: 0px; width: 100%; padding: 0px; margin: 0px; background-color: white; border-top: 1px solid #ddd">
     <ion-grid>
       <ion-row>
-          <ion-button style="width: 100%" expand="block" color="success">Checkout</ion-button>
+          <ion-button [disabled]="totalPrice === 0 ? true: false" style="width: 100%" expand="block" color="success">Checkout</ion-button>
       </ion-row>
     </ion-grid>
   </div>

@@ -7,7 +7,9 @@
     </ion-tab-button>
 
     <ion-tab-button tab="tab3">
-      <ion-icon name="cart"></ion-icon>
+      <ion-badge *ngIf="badge > 0" color="danger">{{badge}}</ion-badge>
+      <ion-icon name="cart">
+      </ion-icon>
       <ion-label>Cart</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
